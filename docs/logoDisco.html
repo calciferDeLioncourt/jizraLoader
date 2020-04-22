@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño Jizra</title>
+    <script src="https://kit.fontawesome.com/1f8614daef.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://jizratest.eu5.org/net/css/social-bar.css">
+    <style>
+        :root{
+            --size: 22.5em;
+            --logoPorciento:7%;
+            --loaderPorciento:10%;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 90vh;
+            font-size: 16px;
+        }
+        .jizra__logo{
+            position: absolute;
+            left: var(--logoPorciento);
+            top: var(--logoPorciento);
+            right: var(--logoPorciento);
+            bottom: var(--logoPorciento);
+            z-index: 20;
+            animation: jizra 1s linear infinite;
+            /* display: none; */
+        }
+       
+        @keyframes fondo-logo{
+            50%{
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+        .jizra__logo::after{
+            background:rgba(255, 255, 255, .0);
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .jizra__logo__img{
+            width: 100%;
+            position: relative;
+        }
+        @keyframes jizra{
+            0%,100%{
+                filter: hue-rotate(0deg);
+            }
+            50%{
+                filter: hue-rotate(360deg);
+            }
+        }
+        span.ondas{
+            position: absolute;
+            background: rgba(255, 255, 255, 1);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            border-radius: 50%;
+            animation: ondas 1s linear infinite;
+            z-index: 10;
+        }
+        @keyframes ondas{
+            0%{
+                width: 0px;
+                height: 0px;
+                opacity: .5;
+            }
+            100%{
+                width: 500px;
+                height: 500px;
+                opacity: 0;
+            }
+        }
+        .loader{
+            display: flex;
+            justify-content: center;
+            position: relative;
+            width: var(--size);
+            max-width: 500px;
+            height: var(--size);
+            max-height: 500px;
+            border: 4px solid #000;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.1),
+                        10px 10px 10px rgba(0, 0, 0, 0.4),
+                        inset -5px -5px 5px rgba(255, 255, 255, 0.2),
+                        inset 10px 10px 10px rgba(0, 0, 0, 0.4);
+        }
+        .loader::before{
+            content: "";
+            position: absolute;
+            left: var(--loaderPorciento);
+            top: var(--loaderPorciento);
+            right: var(--loaderPorciento);
+            bottom: var(--loaderPorciento);
+            z-index: 10;
+            background: #000;
+            border-radius: 50%;
+            border: 2px solid #000;
+            box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.2),
+                        3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+        .loader::after{
+            content: "";
+            position: absolute;
+            left: var(--loaderPorciento);
+            top: var(--loaderPorciento);
+            right: var(--loaderPorciento);
+            bottom: var(--loaderPorciento);
+            z-index: 10;
+            background: linear-gradient(135deg, rgba(231,10,231,.7) 0%, rgba(51,232,23,.6) 100%);
+            /* background: linear-gradient(135deg, #14ffe9 0%, #ffeb3b 50%, #ff00e0 100%); */
+            border-radius: 50%;
+            border: 2px solid #000;
+            animation: jizra 1s linear infinite;
+            box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.2),
+                        3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+        .loader__span{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50px;
+            background: linear-gradient(#14ffe9,#ffeb3b,#ff00e0);
+            filter: blur(20px);
+            z-index: -1;
+            animation: loader 0.5s linear infinite;
+        }
+        @keyframes loader{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .loader__texto{
+            color: rgba(255, 255, 255, 1);
+            position: relative;
+            width: 100%;
+            text-align: center;
+            -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0,0,0,0.2));
+        }
+        .loader__texto__span{
+            position: relative;
+            font-size: 2em;
+            display: inline-block;
+            text-transform: uppercase;
+            /* animation: texto 2s ease-in-out infinite; */
+        }
+        @keyframes texto {
+            0%, 40%, 100% {
+                transform: translateY(0);
+            }
+            20%{
+                transform: translateY(-50px);
+            }
+        }
+        @media screen and (min-width: 600px){
+            :root{
+                --size: 25em;
+            }
+        }
+        @media screen and (min-width: 720px){
+            body{
+                flex-wrap: nowrap;
+            }
+            .loader__texto{
+                width: auto;
+                margin-left: 3.125em;
+            }
+        }
+    </style>
+</head>
+<body class="">
+    <section class="loader">
+        <span class="loader__span"></span>
+        <span class="loader__span"></span>
+        <section class="btn jizra__logo">
+            <img loading="lazy" src="https://jizratest.eu5.org/img/diseno-jizra-logo.png" alt="Jizra Logo" class="jizra__logo__img">
+        </section>
+    </section>
+    <section class="loader__texto">
+        <span class="loader__texto__span">L</span>
+        <span class="loader__texto__span">O</span>
+        <span class="loader__texto__span">A</span>
+        <span class="loader__texto__span">D</span>
+        <span class="loader__texto__span">I</span>
+        <span class="loader__texto__span">N</span>
+        <span class="loader__texto__span">G</span>
+        <span class="loader__texto__span">.</span>
+        <span class="loader__texto__span">.</span>
+        <span class="loader__texto__span">.</span>
+    </section>
+    <script>
+        let letra = document.querySelectorAll('.loader__texto__span');
+        for(let i = 0; i < letra.length; i++){
+            letra[i].style = `animation: texto 2s ease-in-out ${0.1 * i}s infinite;`
+        }
+    </script>
+    <script src="js/btns-ondas.js"></script>
+    <script src="https://jizratest.eu5.org/net/js/social-bar.js"></script>
+</body>
+</html>
